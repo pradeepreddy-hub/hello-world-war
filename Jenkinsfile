@@ -1,6 +1,7 @@
 pipeline {
-    agent { label 'java' }
+    agent none
     stages {
+        parallel {
         stage('checkout') {
             steps {
                 sh "rm -rf hello-world-war"
@@ -11,6 +12,7 @@ pipeline {
             steps {
                 sh "mvn clean package"           
             }
+        }
         }
         stage ('deploy') {
             steps {
