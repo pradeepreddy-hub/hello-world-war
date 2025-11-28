@@ -3,12 +3,14 @@ pipeline {
     stages {
         parallel {
         stage('checkout') {
+            agent { label 'java' }
             steps {
                 sh "rm -rf hello-world-war"
               sh "git clone https://github.com/pradeepreddy-hub/hello-world-war"
             }
         }
         stage ('build') {
+            agent { label 'java' }
             steps {
                 sh "mvn clean package"           
             }
