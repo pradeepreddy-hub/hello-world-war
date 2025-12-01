@@ -3,7 +3,7 @@ pipeline {
     agent any
     parameters {
         string(name: 'mcd1', defaultValue: '', description: 'Enter your name')
-        booleanParam(name: 'test', defaultValue: true, description: 'Enable or disable')
+        booleanParam(name: 'Boolean', defaultValue: true, description: 'Enable or disable')
         choice(name: 'mcd2', choices: ['install', 'package', 'compile'], description: 'select the choice')
     }
     stages {
