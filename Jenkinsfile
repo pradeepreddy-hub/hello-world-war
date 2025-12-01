@@ -11,7 +11,7 @@ pipeline {
             // agent { label 'java' }
             steps {
                 withCredentials([usernamePassword(
-                    credentialsId: '069fddf1-c2cf-4262-9172-5bb4cfbd94c',
+                    credentialsId: '069fddf1-c2cf-4262-9172-5bb4cfbd94c7',
                     usernameVariable: 'admin',
                     passwordVariable: 'admin_password'
                 ),
