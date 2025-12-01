@@ -1,6 +1,10 @@
 pipeline {
     // agent { label 'java' }
-    agent none
+    agent any
+    parameters {
+        string(name: 'mcd1', defaultValue: '', description: 'Enter your name')
+        choice(name: 'mcd2', choices: ['install', 'package', 'compile'], description: 'select the choice')
+    }
     stages {
         stage ('hello-world-war') {
             parallel {
@@ -14,7 +18,7 @@ pipeline {
         stage ('build') {
             agent { label 'java' }
             steps {
-                sh "mvn clean package"           
+                sh "mvn $mcd1 $mcd2"           
             }
         }
         stage ('deploy') {
