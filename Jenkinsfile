@@ -10,24 +10,25 @@ pipeline {
         stage('checkout') {
             // agent { label 'java' }
             steps {
-                withCredentials([usernamePassword( credentialsId: '069fddf1-c2cf-4262-9172-5bb4cfbd94c7', usernameVariable: 'admin', passwordVariable: 'admin_password'
-)])
-                sh "rm -rf hello-world-war"
-              sh "git clone https://github.com/pradeepreddy-hub/hello-world-war"
+                withCredentials([usernamePassword(
+                    credentialsId: '069fddf1-c2cf-4262-9172-5bb4cfbd94c7',
+                    usernameVariable: 'admin',
+                    passwordVariable: 'admin_password'
+                )]) {
+                    sh "rm -rf hello-world-war"
+                    sh "git clone https://${admin}:${admin_password}@github.com/pradeepreddy-hub/hello-world-war.git"
+                }
             }
         }
         stage ('build') {
             steps {
-                sh "mvn $mcd1 $mcd2"           
+                sh "mvn ${params.mcd1} ${params.mcd2}"
             }
         }
         stage ('deploy') {
             steps {
-                sh "sudo cp /home/slave1/workspace/hello-world-war-pipeline/target/hello-world-war-1.0.1.war /opt/apache-tomcat-10.1.49/webapps/"
+                sh "sudo cp ${env.WORKSPACE}/target/hello-world-war-1.0.1.war /opt/apache-tomcat-10.1.49/webapps/"
             }
         }
-        
     }
 }
-
-
