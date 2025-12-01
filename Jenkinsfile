@@ -14,13 +14,13 @@ pipeline {
                     credentialsId: '069fddf1-c2cf-4262-9172-5bb4cfbd94c7',
                     usernameVariable: 'admin',
                     passwordVariable: 'admin_password'
-                    
-         withCredentials([sshUserPrivateKey(
+                ),
+                    sshUserPrivateKey(
     credentialsId: '170dadeb-9b7a-43b8-8d8b-9a50dcab1833',
     keyFileVariable: 'KEY_FILE',
     usernameVariable: 'SSH_USER'
-)])
-)]) {
+               )
+    ]) {
                     sh "rm -rf hello-world-war"
                     sh "git clone https://${admin}:${admin_password}@github.com/pradeepreddy-hub/hello-world-war.git"
                 }
