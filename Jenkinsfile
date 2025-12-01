@@ -11,7 +11,7 @@ pipeline {
             agent { label 'java' }
             steps {
                 withCredentials([usernamePassword( credentialsId: '069fddf1-c2cf-4262-9172-5bb4cfbd94c7', usernameVariable: 'admin', passwordVariable: 'admin password'
-)]) 
+)]) }
                 sh "rm -rf hello-world-war"
               sh "git clone https://github.com/pradeepreddy-hub/hello-world-war"
             }
@@ -28,4 +28,5 @@ pipeline {
         }
         
     }
-}
+
+
