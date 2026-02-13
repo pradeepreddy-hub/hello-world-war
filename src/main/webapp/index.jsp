@@ -3,7 +3,7 @@
 <title>Hello World!</title>
 </head>
 <body>
-	<h1>Hello World!</h1>
+	<h1>Hello Everyone!, Welcome to Devops Multi-staging. All th best for the upcoming Mock interview</h1>
 	<p>
 		It is now
 		<%= new java.util.Date() %></p>
